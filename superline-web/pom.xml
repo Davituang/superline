@@ -48,6 +48,12 @@
 			<groupId>com.101tec</groupId>
 			<artifactId>zkclient</artifactId>
 		</dependency>
+
+		<!--aop-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

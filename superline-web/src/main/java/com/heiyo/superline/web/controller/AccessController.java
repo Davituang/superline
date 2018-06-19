@@ -88,5 +88,12 @@ public class AccessController {
         }
     }
 
+    @RequestMapping("/doError")
+    public void doError(HttpServletResponse response) throws Exception{
+        int a=1/0;
+        response.getWriter().print(a);
+
+    }
+
 
 }

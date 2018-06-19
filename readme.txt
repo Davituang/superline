@@ -86,3 +86,45 @@
     2.在需要校验的实体类的字段上加上注解和错误信息
     3.在controller方法形参中加入@validated 实体类 变量，BindingResult br
     4.调用br.hasErrors来判断是否有不符合要求的地方，可以获取到错误信息返回给前端。
+
+七、springboot中使用aop
+    参考：https://www.cnblogs.com/bigben0123/p/7779357.html
+    1.导入aop jar包
+    2.编写切面类
+    3.在切面类上配置@Aspect，表示该类是个切面类
+    4.添加空方法，配置切入点表达式
+    5.在方法上添加注释，配置前置通知，后置通知，异常通知，最红通知，环绕通知等。
+
+    常用注解说明
+        1.@Aspect：作用是把当前类标识为一个切面供容器读取
+
+        2.@Before：标识一个前置增强方法，相当于BeforeAdvice的功能
+
+        3.@AfterReturning：后置增强，相当于AfterReturningAdvice，方法退出时执行
+
+        4.@AfterThrowing：异常抛出增强，相当于ThrowsAdvice
+
+        5.@After：final增强，不管是抛出异常或者正常退出都会执行
+
+        6.@Around：环绕增强，相当于MethodInterceptor
+
+    各方法参数说明：
+        除了@Around外，每个方法里都可以加或者不加参数JoinPoint，如果有用JoinPoint的地方就加，不加也可以，
+        JoinPoint里包含了类名、被切面的方法名，参数等属性，可供读取使用。
+        @Around参数必须为ProceedingJoinPoint，pjp.proceed相应于执行被切面的方法。
+        @AfterReturning方法里，可以加returning = “XXX”，XXX即为在controller里方法的返回值。
+        @AfterThrowing方法里，可以加throwing = "XXX"，供读取异常信息。
+
+八、springboot中使用事物管理
+    1.引入jar，在本工程中，由于使用的是mybatis-starter,在这个整合包中已经依赖了事物，所以不用再次引入
+    2.在springboot启动类上添加@EnableTransactionManagement,开启事物
+    3.在需要事物控制的业务层的接口/类/方法上添加@Transactional注解，并制定事物传播行为，是否只读，隔离级别等
+
+九、整合mybaits
+    1.引入jar,推荐在创建springboot工程时就选择好依赖mybatis，在未开发时现将其注释掉
+    2.在springboot启动类上添加@MapperScan("path"),指定mybaits的dao的mapper接口的包路径，如果这里不配置，也可以在每个mapper接口上添加@Mapper注解
+    实现的效果是一样的，两者必须配置其中一个，否则报错。
+    3.在属性配置文件中指定mapper.xml文件位置，以及配置别名，同时可以开启驼峰命名法
+        mybatis.mapper-locations= classpath:com.heiyo.superline.dao.mapper/*.xml
+        mybatis.type-aliases-package=com.heiyo.superline.domain
+        mybatis.configuration.map-underscore-to-camel-case=true
