@@ -128,3 +128,15 @@
         mybatis.mapper-locations= classpath:com.heiyo.superline.dao.mapper/*.xml
         mybatis.type-aliases-package=com.heiyo.superline.domain
         mybatis.configuration.map-underscore-to-camel-case=true
+
+十、整合redis
+    1.引入jar,推荐在创建springboot工程时就选择好redis依赖，在未开发时将其注释掉
+    2.填写属性配置文件
+    3.新建redis配置类，创建字符串操作模板和对象操作模板
+    4.对象操作模板的创建依赖redis序列化策略，手动实现redis序列化策略，并注入对象操作模板实例
+    5.基本配置完成，在需要使用redis存储的地方注入这两个操作模板，调用方法进行存取删
+
+    注意事项
+    1.正确理解redis存储方式，redis存储方式共5中，分别为string,list,set,sortedset,hash
+    2.除string方式外，其余存取方式都可以存取单个实例，实例数组，实例集合，这里的实例可以是string实例也可以是自定义类实例。
+    3.两个操作模板不能同时往一个key中存取数据，否则会导致读取数据解析失败。

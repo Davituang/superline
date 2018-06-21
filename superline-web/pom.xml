@@ -35,7 +35,7 @@
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
-		<!--dubbo服务依赖包-->
+		<!--&lt;!&ndash;dubbo服务依赖包&ndash;&gt;
 		<dependency>
 			<groupId>com.alibaba.spring.boot</groupId>
 			<artifactId>dubbo-spring-boot-starter</artifactId>
@@ -47,7 +47,7 @@
 		<dependency>
 			<groupId>com.101tec</groupId>
 			<artifactId>zkclient</artifactId>
-		</dependency>
+		</dependency>-->
 
 		<!--aop-->
 		<dependency>
