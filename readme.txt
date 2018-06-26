@@ -26,7 +26,7 @@
     springbootstarter整合参考：https://github.com/alibaba/dubbo-spring-boot-starter/blob/master/README_zh.md
 
     说明，本demo中使用的是springbootstarter方式整合，这样可以不用编写xml文件，直接通过配置简单的属性加上注解即可使用，踩的坑
-    1.在导入springbootstarter jar包时，注意版本，导入2.0.0版本的，应为测试其他版本暂时并没有测通，注意，该jar中已经依赖了dubbo jar,
+    1.在导入springbootstarter jar包时，注意版本，导入2.0.0版本的，因为测试其他版本暂时并没有测通，注意，该jar中已经依赖了dubbo jar,
     在项目中不必再引入dubbo jar，但需要引入注册中心jar。
 
     2.记得在入口程序上开启dubbo注解的支持
@@ -93,7 +93,7 @@
     2.编写切面类
     3.在切面类上配置@Aspect，表示该类是个切面类
     4.添加空方法，配置切入点表达式
-    5.在方法上添加注释，配置前置通知，后置通知，异常通知，最红通知，环绕通知等。
+    5.在方法上添加注释，配置前置通知，后置通知，异常通知，最终通知，环绕通知等。
 
     常用注解说明
         1.@Aspect：作用是把当前类标识为一个切面供容器读取
